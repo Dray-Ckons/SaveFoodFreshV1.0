@@ -49,6 +49,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("com.google.code.gson:gson:2.8.9")
 
     val room_version = "2.5.1"
 
