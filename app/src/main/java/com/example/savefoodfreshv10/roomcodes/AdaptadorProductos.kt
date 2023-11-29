@@ -1,66 +1,86 @@
 package com.example.savefoodfreshv10.roomcodes
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import com.example.savefoodfreshv10.R
+import com.example.savefoodfreshv10.roomcodes.Producto
+import com.example.savefoodfreshv10.databinding.ItemRvProductoBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class AdaptadorProductos (
-    val listaProductos: MutableList<Producto>,
-    val listener: AdaptadorListener
-): RecyclerView.Adapter<AdaptadorProductos.ViewHolder>() {
+class AdaptadorProductos(
+    private val listaProductos: MutableList<Producto>,
+    private val listener: AdaptadorListener
+) : RecyclerView.Adapter<AdaptadorProductos.ViewHolder>(), Filterable {
 
+    private var listaProductosFiltrada: MutableList<Producto> = listaProductos.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val vista = LayoutInflater.from(parent.context).inflate(R.layout.item_rv_producto,parent, false)
-        return ViewHolder(vista)
+        val binding = ItemRvProductoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val producto= listaProductos[position]
+        val producto = listaProductosFiltrada[position]
 
-        holder.tvNombre.text = producto.nombre
-        holder.tvFechaVencimiento.text = producto.fechaVencimiento?.let { SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(it) }
-        holder.tvCantidad.text = producto.cantidad.toString()
-        holder.tvPrecio.text = producto.precio.toString()
-        holder.tvCategoria.text = producto.categoria
-        holder.tvDescripcion.text = producto.descripcion
+        holder.bind(producto)
 
-        holder.btnEditar.setOnClickListener{
+        holder.binding.btnEditar.setOnClickListener {
             listener.onEditItemClick(producto)
         }
 
-        holder.btnBorrar.setOnClickListener{
+        holder.binding.btnBorrar.setOnClickListener {
             listener.onDeleteItemClick(producto)
         }
-
     }
 
     override fun getItemCount(): Int {
-        return listaProductos.size
+        return listaProductosFiltrada.size
     }
 
-    inner class ViewHolder(ItemView: View): RecyclerView.ViewHolder(ItemView) {
-        val cvProducto = itemView.findViewById<CardView>(R.id.cvProducto)
-        val tvNombre = itemView.findViewById<TextView>(R.id.tvNombre)
-        val tvFechaVencimiento = itemView.findViewById<TextView>(R.id.tvFechaVencimiento)
-        val tvCantidad = itemView.findViewById<TextView>(R.id.tvCantidad)
-        val tvPrecio = itemView.findViewById<TextView>(R.id.tvPrecio)
-        val tvCategoria = itemView.findViewById<TextView>(R.id.tvCategoria)
-        val tvDescripcion = itemView.findViewById<TextView>(R.id.tvDescripcion)
-        val btnBorrar = itemView.findViewById<Button>(R.id.btnBorrar)
-        val btnEditar = itemView.findViewById<Button>(R.id.btnEditar)
+    inner class ViewHolder(val binding: ItemRvProductoBinding) : RecyclerView.ViewHolder(binding.root) {
 
-
+        fun bind(producto: Producto) {
+            binding.tvNombre.text = producto.nombre
+            binding.tvFechaVencimiento.text =
+                producto.fechaVencimiento?.let { SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(it) }
+            binding.tvCantidad.text = producto.cantidad.toString()
+            binding.tvPrecio.text = producto.precio.toString()
+            binding.tvCategoria.text = producto.categoria
+            binding.tvDescripcion.text = producto.descripcion
+        }
     }
 
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val resultadosFiltrados = mutableListOf<Producto>()
 
+                if (constraint.isNullOrBlank()) {
+                    resultadosFiltrados.addAll(listaProductos)
+                } else {
+                    val filtro = constraint.toString().toLowerCase(Locale.getDefault())
+                    for (producto in listaProductos) {
+                        if (producto.nombre.toLowerCase(Locale.getDefault()).contains(filtro) ||
+                            producto.categoria.toLowerCase(Locale.getDefault()).contains(filtro)) {
+                            resultadosFiltrados.add(producto)
+                        }
+                    }
+                }
+
+                val resultados = FilterResults()
+                resultados.values = resultadosFiltrados
+                return resultados
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                listaProductosFiltrada.clear()
+                listaProductosFiltrada.addAll(results?.values as MutableList<Producto>)
+                notifyDataSetChanged()
+            }
+        }
+    }
 }

@@ -25,6 +25,8 @@
     <string name="confirmar_contrase_a">Confirmer le mot de passe</string>
     <string name="nombre_de_usuario">Nom d´utilisateur</string>
     <string name="sing_up">S´inscrire</string>
+    <string name="buscar_por_nombre_o_categor_a">Rechercher par nom ou catégorie</string>
+
 
 
 </resources>

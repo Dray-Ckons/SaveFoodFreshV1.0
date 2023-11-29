@@ -19,16 +19,27 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 import android.view.View
+import android.widget.SearchView
 
 
 class MainActivity : AppCompatActivity(), AdaptadorListener {
 
     lateinit var binding: ActivityMainBinding
-
     var listaProductos: MutableList<Producto> = mutableListOf()
     lateinit var adaptador: AdaptadorProductos
     lateinit var room: DbProducto
     lateinit var producto: Producto
+
+    // Agrega una variable para realizar un seguimiento del estado actual de ordenamiento
+    private var estadoOrdenamiento: EstadoOrdenamiento = EstadoOrdenamiento.PRECIO_ASC
+
+    // Enum que representa los posibles estados de ordenamiento
+    enum class EstadoOrdenamiento {
+        PRECIO_ASC,
+        PRECIO_DESC,
+        NOMBRE_ASC,
+        NOMBRE_DESC
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,23 +48,28 @@ class MainActivity : AppCompatActivity(), AdaptadorListener {
 
         binding.rvProductos.layoutManager = LinearLayoutManager(this)
 
-        room = Room.databaseBuilder(this, DbProducto::class.java, "dbProductos").allowMainThreadQueries().fallbackToDestructiveMigration().build()
+        room = Room.databaseBuilder(this, DbProducto::class.java, "dbProductos")
+            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
+            .build()
 
         obtenerProductos(room)
 
-
-
         binding.btnAddUpdate.setOnClickListener {
-            if(binding.etNombre.text.isNullOrEmpty() || binding.etCategoria.text.isNullOrEmpty()) {
-                Toast.makeText(this,
-                    getString(R.string.debes_llenar_todos_los_camposxml), Toast.LENGTH_SHORT).show()
+            if (binding.etNombre.text.isNullOrEmpty() || binding.etCategoria.text.isNullOrEmpty()) {
+                Toast.makeText(
+                    this,
+                    getString(R.string.debes_llenar_todos_los_camposxml),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
             if (binding.btnAddUpdate.text == getString(R.string.agregarxml)) {
                 producto = Producto(
                     nombre = binding.etNombre.text.toString().trim(),
-                    fechaVencimiento = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(binding.etFechaVencimiento.text.toString()),
+                    fechaVencimiento = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .parse(binding.etFechaVencimiento.text.toString()),
                     cantidad = binding.etCantidad.text.toString().toInt(),
                     precio = binding.etPrecio.text.toString().toInt(),
                     categoria = binding.etCategoria.text.toString().trim(),
@@ -61,9 +77,11 @@ class MainActivity : AppCompatActivity(), AdaptadorListener {
                 )
 
                 agregarProducto(room, producto)
-            } else if(binding.btnAddUpdate.text == getString(R.string.actualizarxml)) {
+            } else if (binding.btnAddUpdate.text == getString(R.string.actualizarxml)) {
                 producto.nombre = binding.etNombre.text.toString().trim()
-                producto.fechaVencimiento = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(binding.etFechaVencimiento.text.toString())
+                producto.fechaVencimiento =
+                    SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .parse(binding.etFechaVencimiento.text.toString())
                 producto.cantidad = binding.etCantidad.text.toString().toInt()
                 producto.precio = binding.etPrecio.text.toString().toInt()
                 producto.categoria = binding.etCategoria.text.toString().trim()
@@ -72,6 +90,46 @@ class MainActivity : AppCompatActivity(), AdaptadorListener {
                 actualizarProducto(room, producto)
             }
         }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adaptador.filter.filter(newText)
+                return true
+            }
+        })
+
+        // Configura el clic del botón de ordenamiento
+        binding.btnOrden.setOnClickListener {
+            ordenarProductos()
+        }
+    }
+
+    private fun ordenarProductos() {
+        when (estadoOrdenamiento) {
+            EstadoOrdenamiento.PRECIO_ASC -> {
+                listaProductos.sortBy { it.precio }
+                estadoOrdenamiento = EstadoOrdenamiento.PRECIO_DESC
+            }
+            EstadoOrdenamiento.PRECIO_DESC -> {
+                listaProductos.sortByDescending { it.precio }
+                estadoOrdenamiento = EstadoOrdenamiento.NOMBRE_ASC
+            }
+            EstadoOrdenamiento.NOMBRE_ASC -> {
+                listaProductos.sortBy { it.nombre }
+                estadoOrdenamiento = EstadoOrdenamiento.NOMBRE_DESC
+            }
+            EstadoOrdenamiento.NOMBRE_DESC -> {
+                listaProductos.sortByDescending { it.nombre }
+                estadoOrdenamiento = EstadoOrdenamiento.PRECIO_ASC
+            }
+        }
+
+        adaptador.notifyDataSetChanged()
+        obtenerProductos(room)
     }
 
     fun onClickScheduledDate(v: View?){

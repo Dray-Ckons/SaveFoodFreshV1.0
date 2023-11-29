@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".SingUpActivity">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
+        android:textColor="#33ccff"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:text="@string/sing_up"
+        android:textColor="#FFD600"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +40,7 @@
         android:textSize="16sp"
         android:layout_marginTop="44dp"
         android:hint="@string/nombre_de_usuario"
+        android:backgroundTint="#4CAF50"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -47,6 +51,7 @@
         android:textSize="16sp"
         android:layout_marginTop="24dp"
         android:hint="@string/correo_electr_nico"
+        android:backgroundTint="#FF5252"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombre"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -58,6 +63,7 @@
         android:textSize="16sp"
         android:layout_marginTop="24dp"
         android:hint="@string/contrase_a"
+        android:backgroundTint="#FFD600"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         tools:layout_editor_absoluteX="0dp" />
@@ -70,6 +76,7 @@
         android:textSize="16sp"
         android:layout_marginTop="24dp"
         android:hint="@string/confirmar_contrase_a"
+        android:backgroundTint="#FF5252"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword1"
         tools:layout_editor_absoluteX="0dp" />
@@ -81,6 +88,7 @@
         android:layout_below="@id/editTextPassword2"
         android:layout_marginTop="48dp"
         android:text="@string/registrarse"
+        android:backgroundTint="#FF5252"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword2" />

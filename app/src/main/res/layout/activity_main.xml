@@ -6,7 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:queryHint="@string/buscar_por_nombre_o_categor_a"
+            app:iconifiedByDefault="false"/>
+        <ImageButton
+            android:id="@+id/btnOrden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_sort"
+            android:padding="8dp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="@string/nombrexml"/>
+            android:hint="@string/nombrexml"
+            android:backgroundTint="#33CCFF"/>
 
         <EditText
             android:id="@+id/etFechaVencimiento"
@@ -29,42 +53,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date"
-            android:hint="@string/fecha_de_vencimientoxml"/>
+            android:hint="@string/fecha_de_vencimientoxml"
+            android:backgroundTint="#4CAF50"/>
 
         <EditText
             android:id="@+id/etCantidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="@string/cantidadxml"/>
+            android:hint="@string/cantidadxml"
+            android:backgroundTint="#FFD600"/>
 
         <EditText
             android:id="@+id/etPrecio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:hint="@string/precioxml"/>
+            android:hint="@string/precioxml"
+            android:backgroundTint="#FF5252"/>
 
         <EditText
             android:id="@+id/etCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="@string/categoriaxml"/>
+            android:hint="@string/categoriaxml"
+            android:backgroundTint="#33CCFF"/>
 
         <EditText
             android:id="@+id/etDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="@string/descripcionxml"/>
+            android:hint="@string/descripcionxml"
+            android:backgroundTint="#4CAF50"/>
 
         <Button
             android:id="@+id/btnAddUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/agregarxml" />
+            android:text="@string/agregarxml"
+            android:backgroundTint="#33ccff"/>
 
     </LinearLayout>
 
