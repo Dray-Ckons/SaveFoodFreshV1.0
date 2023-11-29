@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Save Food Fresh v1.0</string>
+    <string name="nombrexml">Nombre</string>
+    <string name="fecha_de_vencimientoxml">Fecha de Vencimiento</string>
+    <string name="cantidadxml">Cantidad</string>
+    <string name="precioxml">Precio</string>
+    <string name="categoriaxml">Categoría</string>
+    <string name="descripcionxml">Descripción</string>
+    <string name="agregarxml">Agregar</string>
+    <string name="borrarxml">Borrar</string>
+    <string name="editarxml">Editar</string>
+    <string name="actualizarxml">actualizar</string>
+    <string name="debes_llenar_todos_los_camposxml">DEBES LLENAR TODOS LOS CAMPOS</string>
+</resources>
