@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Save Food Fresh v1.0</string>
+    <string name="nombrexml">Name</string>
+    <string name="fecha_de_vencimientoxml">Expiration Date</string>
+    <string name="cantidadxml">Quantity</string>
+    <string name="precioxml">Price</string>
+    <string name="categoriaxml">Category</string>
+    <string name="descripcionxml">Description</string>
+    <string name="agregarxml">Add</string>
+    <string name="borrarxml">Delete</string>
+    <string name="editarxml">Edit</string>
+    <string name="actualizarxml">Update</string>
+    <string name="debes_llenar_todos_los_camposxml">YOU MUST FILL OUT ALL FIELDS</string>
+    <string name="inicio_de_sesi_n_exitoso">Successful Login</string>
+    <string name="correo_o_contrase_a_incorrectos">Incorrect Email or Password</string>
+    <string name="cuenta_creada_correctamente">Account Created Successfully</string>
+    <string name="el_correo_electr_nico_ya_est_en_uso">Email is Already in Use</string>
+    <string name="verifique_la_contrase_a">Verify Password</string>
+    <string name="loging">Login</string>
+    <string name="correo_electr_nico">Email</string>
+    <string name="contrase_a">Password</string>
+    <string name="iniciar_sesi_n">Log In</string>
+    <string name="registrarse">Sign Up</string>
+    <string name="confirmar_contrase_a">Confirm Password</string>
+    <string name="nombre_de_usuario">Username</string>
+    <string name="sing_up">Sign Up</string>
+
+
+</resources>

@@ -51,14 +51,16 @@ class SingUpActivity : AppCompatActivity() {
                     editor.apply()
 
                     // Mostrar un mensaje o realizar otras acciones después de guardar
-                    Toast.makeText(this, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.cuenta_creada_correctamente), Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(this, "El correo electrónico ya está en uso", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.el_correo_electr_nico_ya_est_en_uso), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Verifique la Contraseña", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.verifique_la_contrase_a), Toast.LENGTH_SHORT).show()
             }
         }
 

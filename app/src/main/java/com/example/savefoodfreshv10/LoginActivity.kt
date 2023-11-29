@@ -38,11 +38,13 @@ class LoginActivity : AppCompatActivity() {
 
             if (cuentaExistente != null) {
                 // Inicio de sesión exitoso, puedes realizar acciones adicionales aquí
-                Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.inicio_de_sesi_n_exitoso), Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.correo_o_contrase_a_incorrectos), Toast.LENGTH_SHORT).show()
             }
         }
 

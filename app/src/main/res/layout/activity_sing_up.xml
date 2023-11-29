@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:text="Sing Up"
+        android:text="@string/sing_up"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="44dp"
-        android:hint="Nombre de Usuario"
+        android:hint="@string/nombre_de_usuario"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="24dp"
-        android:hint="Correo electrónico"
+        android:hint="@string/correo_electr_nico"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombre"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="24dp"
-        android:hint="Contraseña"
+        android:hint="@string/contrase_a"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         tools:layout_editor_absoluteX="0dp" />
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="24dp"
-        android:hint="Confirmar Contraseña"
+        android:hint="@string/confirmar_contrase_a"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword1"
         tools:layout_editor_absoluteX="0dp" />
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextPassword2"
         android:layout_marginTop="48dp"
-        android:text="Registrarse"
+        android:text="@string/registrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword2" />

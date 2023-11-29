@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Save Food Fresh v1.0</string>
+    <string name="nombrexml">Nom</string>
+    <string name="fecha_de_vencimientoxml">Date d´expiration</string>
+    <string name="cantidadxml">Quantité</string>
+    <string name="precioxml">Prix</string>
+    <string name="categoriaxml">Catégorie</string>
+    <string name="descripcionxml">Description</string>
+    <string name="agregarxml">Ajouter</string>
+    <string name="borrarxml">Supprimer</string>
+    <string name="editarxml">Éditer</string>
+    <string name="actualizarxml">Mettre à jour</string>
+    <string name="debes_llenar_todos_los_camposxml">VOUS DEVEZ REMPLIR TOUS LES CHAMPS</string>
+    <string name="inicio_de_sesi_n_exitoso">Connexion réussie</string>
+    <string name="correo_o_contrase_a_incorrectos">E-mail ou mot de passe incorrect</string>
+    <string name="cuenta_creada_correctamente">Compte créé avec succès</string>
+    <string name="el_correo_electr_nico_ya_est_en_uso">L´e-mail est déjà utilisé</string>
+    <string name="verifique_la_contrase_a">Vérifiez le mot de passe</string>
+    <string name="loging">Connexion</string>
+    <string name="correo_electr_nico">E-mail</string>
+    <string name="contrase_a">Mot de passe</string>
+    <string name="iniciar_sesi_n">Se connecter</string>
+    <string name="registrarse">S´inscrire</string>
+    <string name="confirmar_contrase_a">Confirmer le mot de passe</string>
+    <string name="nombre_de_usuario">Nom d´utilisateur</string>
+    <string name="sing_up">S´inscrire</string>
+
+
+</resources>
